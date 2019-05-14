@@ -25,12 +25,9 @@ def create():
     if request.method == "POST":
         if request.form['name'] not in [donor.name for donor in Donor.select()]:
             return render_template('create.jinja2')
-        
         try:
             donor_obj = Donor.get(Donor.name==(request.form['name']))
             donation = int(request.form['amount'])
-            print(type(donor_obj))
-            print(type(donation))
             new_Donation = Donation(donor=donor_obj, value=donation)
             new_Donation.save()
         except ValueError as val:
