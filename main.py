@@ -25,6 +25,7 @@ def create():
     if request.method == "POST":
         if request.form['name'] not in [donor.name for donor in Donor.select()]:
             return render_template('create.jinja2')
+        
         try:
             donor_obj = Donor.get(Donor.name==(request.form['name']))
             donation = int(request.form['amount'])
@@ -34,6 +35,9 @@ def create():
             new_Donation.save()
         except ValueError as val:
             print(val)
+            return render_template('create.jinja2')
+        except OverflowError as over:
+            print(over)
             return render_template('create.jinja2')
         return redirect(url_for('all'))
     else:
