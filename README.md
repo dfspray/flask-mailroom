@@ -1,5 +1,5 @@
 # Flask Mailroom Application
-
+My UW NetID is dfspray... for whatever reason I thought it meant student ID number...
 Running at https://immense-eyrie-62264.herokuapp.com/donations/
 
 ## Your Task
